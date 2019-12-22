@@ -89,7 +89,7 @@ init
 cd .container
 
 echo "$ cd $(pwd)"
-python3.7 _scripts/py/init_all.py
+python3.8 _scripts/py/init_all.py
 
 CMD+=" -d ${DEST}"
 echo "\$ $CMD"
