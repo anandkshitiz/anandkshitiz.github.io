@@ -6,4 +6,4 @@ title: About
 # MIT License
 ---
 
-> **Note**: Add Markdown syntax content to file `tabs/about.md` and it will show up on this page.
+Senior Member Of Technical Staff with a demonstrated history of developing robust, agile and business oriented software products in Cloud. Skilled in Full Stack Software Development in AWS and Oracle Cloud. 
