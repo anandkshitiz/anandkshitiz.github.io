@@ -1,10 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'jekyll', "3.8.5"
+gem 'jekyll', '>=3.8.5'
 
+# Official Plugins
 group :jekyll_plugins do
-	gem "jekyll-sitemap", "1.4.0"
-	gem "jekyll-paginate", "1.1.0"
-	gem "jemoji", "0.11.1"
+  gem 'jekyll-paginate'
+  gem 'jekyll-redirect-from'
+  gem 'jekyll-seo-tag'
   gem 'github-pages'
 end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
