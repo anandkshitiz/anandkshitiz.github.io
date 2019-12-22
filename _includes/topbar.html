@@ -28,14 +28,15 @@
 
     <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i>
 
-    <div id="topbar-title"> Articles
-    <!-- {% if page.location %}
+    <div id="topbar-title">
+    {% if page.location %}
       {{- page.location -}}
     {% elsif page.layout == "home" %}
-      {{- site.title -}}
+      <!-- {{- site.title -}} -->
+      <span>Articles</span>
     {% else %}
       {{- page.title -}}
-    {% endif %} -->
+    {% endif %}
     </div>
 
     <i id="search-trigger" class="fas fa-search fa-fw"></i>
