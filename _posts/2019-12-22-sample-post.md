@@ -9,5 +9,5 @@ tags:
 published: true
 ---
 
-![Kshitiz.jpg]({{site.baseurl}}/_posts/Kshitiz.jpg)
+# Kshitiz
 
