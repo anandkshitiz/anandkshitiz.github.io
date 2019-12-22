@@ -98,7 +98,7 @@
         location: Post
         breadcrumb:
           -
-            label: Posts
+            label: Articles
             url: /
     -
       scope:
