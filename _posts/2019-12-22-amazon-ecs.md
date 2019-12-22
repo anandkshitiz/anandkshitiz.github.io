@@ -1,10 +1,12 @@
 ---
 title: AWS ECS
 date: '2019-12-22 11:41:00'
-categories: ['AWS','ECS']
-tags: ['aws']
+categories: [AWS, ECS]
+tags: [aws]
 published: true
 comments: true
+seo:
+  date_modified: 2019-12-22 22:01:15 +0530
 ---
 
 ## Containers - Overview
