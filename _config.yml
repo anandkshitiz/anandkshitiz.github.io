@@ -8,7 +8,7 @@
 
   title: 'Kshitiz Anand'
 
-  description: "Kshitiz Anand's Blog."
+  description: "SMTS @ Athena Health"
   
   # Replace with your domain, e.g. 'https://username.github.io'
   url: 'https://anandkshitiz.github.io/'
@@ -93,7 +93,7 @@
         type: posts
       values:
         layout: post
-        comments: true    # Enable comments in posts.
+        comments: false    # Enable comments in posts.
         toc: true         # Display TOC column in posts.
         location: Post
         breadcrumb:
