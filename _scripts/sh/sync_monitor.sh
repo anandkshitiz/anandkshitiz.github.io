@@ -32,6 +32,6 @@ if [[ -f "$1" ]]; then
 fi
 
 if [[ $related_dir == "_posts" ]]; then
-  python $3/_scripts/py/init_all.py
-  python $3/_scripts/py/update_posts_lastmod.py -f "$dest/$(basename $1)" -t fs
+  python3.7 $3/_scripts/py/init_all.py
+  python3.7 $3/_scripts/py/update_posts_lastmod.py -f "$dest/$(basename $1)" -t fs
 fi

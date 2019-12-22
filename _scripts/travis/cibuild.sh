@@ -18,7 +18,7 @@ if [[ $TRAVIS_PULL_REQUEST = "false" ]]; then # triggered by author
 else # triggered by Pull Request
 
   bundle install --path vendor/bundle --quiet
-  python _scripts/py/init_all.py
+  python3.7 _scripts/py/init_all.py
 
   build_cmd="JEKYLL_ENV=production bundle exec jekyll build"
 
