@@ -32,8 +32,7 @@
     {% if page.location %}
       {{- page.location -}}
     {% elsif page.layout == "home" %}
-      <!-- {{- site.title -}} -->
-      <span>Articles</span>
+      {{- site.title -}}
     {% else %}
       {{- page.title -}}
     {% endif %}

@@ -22,17 +22,20 @@
   
   twitter:
     username: anandkshitiz            # change to your twitter username
+
+  linkedin:
+    username: anandkshitiz
   
   social:
     name: Kshitiz Anand                  # it will shows as the copyright owner in Footer
     email: anandkshitiz@gmail.com             # change to your email address
     links:
       # The first element serves as the copyright owner's link
-      - https://twitter.com/anandkshitiz      # change to your twitter homepage
-      - https://github.com/anandkshitiz       # change to your github homepage
+      - https://www.linkedin.com/in/anandkshitiz/
+      # - https://twitter.com/anandkshitiz      # change to your twitter homepage
+      # - https://github.com/anandkshitiz       # change to your github homepage
       # Uncomment below to add more social links
       # - https://www.facebook.com/username
-      # - https://www.linkedin.com/in/username
   
   google_site_verification: google_meta_tag_verification # change to your verification string
   
@@ -98,7 +101,7 @@
         location: Post
         breadcrumb:
           -
-            label: Articles
+            label: Posts
             url: /
     -
       scope:
