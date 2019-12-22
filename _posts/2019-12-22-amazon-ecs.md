@@ -8,10 +8,17 @@ published: true
 
 ## Containers - Overview
 
-A container is a standard unit of software that packages up code and all its dependencies; so the application runs quickly and reliably from one computing environment to another.
+Imagine a scenario where an application needs to run in different environments. In order for this application to run successfully its dependency with correct version needs to be installed in every environment.
 
 <img src="{{ site.baseurl }}/assets/img/Container-Overview-1.png"
-     style="float: left; margin-right: 10px;" />
+     style=" float: center;
+    width: 500px;
+    height: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;" />
+
+A container is a standard unit of software that packages up code and all its dependencies; so the application runs quickly and reliably from one computing environment to another.
 
 ## Container Orchestration
 ## Amazon ECS - Very High Level
