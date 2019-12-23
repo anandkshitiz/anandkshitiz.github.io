@@ -12,7 +12,7 @@ seo:
 
 Imagine a scenario where an application needs to run in different environments. In order for this application to run successfully its dependency with correct version needs to be installed in every environment.
 
-![ECS High Level Diagram](assets/img/posts/amazon-ecs/Container-Overview-1.png)
+![Container Overview]({{ site.baseurl }}/assets/img/posts/amazon-ecs/Container-Overview-1.png)
 
 A container is a standard unit of software that packages up code and all its dependencies; so the application runs quickly and reliably from one computing environment to another.
 
@@ -26,11 +26,7 @@ A container is a standard unit of software that packages up code and all its dep
 
 ## Amazon ECS - Very High Level
 
-<img src="{{ site.baseurl }}/assets/img/posts/amazon-ecs/ecs-high-level.png"
-     style=" float: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;" />
+![ECS High Level Diagram]({{ site.baseurl }}/assets/img/posts/amazon-ecs/ecs-high-level.png)
 
 ## Running a container with Amazon ECS
 
@@ -56,19 +52,11 @@ A container is a standard unit of software that packages up code and all its dep
 ## Task Definition - What to run
 > **_It specifies the container information for your application, such as how many containers are part of your task, what resources they will use, how they are linked together, and which host ports they will use._**
 
-<img src="{{ site.baseurl }}/assets/img/posts/amazon-ecs/Task-Definition.png"
-     style=" float: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;" />
+![Task Definition]({{ site.baseurl }}/assets/img/posts/amazon-ecs/Task-Definition.png)
 
 ## Service - How to run
 > **_It specifies how many copies of your task definition to run and maintain in a cluster. You can optionally use an Elastic Load Balancing load balancer to distribute incoming traffic to containers in your service.Amazon ECS maintains that number of tasks and coordinates task scheduling with the load balancer._**
 
-<img src="{{ site.baseurl }}/assets/img/posts/amazon-ecs/ECS-Service.png"
-     style=" float: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;" />
+![Service]({{ site.baseurl }}/assets/img/posts/amazon-ecs/ECS-Service.png)
 
 ## Task - What runs
