@@ -3,6 +3,7 @@ title: AWS ECS
 date: '2018-12-23 11:41:00'
 categories: [AWS, ECS]
 tags: [aws]
+# image: " ../../assets/img/posts/amazon-ecs/Container-Overview-1.png"
 seo:
   date_modified: 2019-12-23 10:39:15 +0530
 ---

@@ -3,7 +3,7 @@
 # MIT Licensed
 
 tabs:
-  - { name: "Home", icon: 'fas fa-home' }
+  - { name: "Posts", icon: 'fas fa-home' }
   - { name: "Categories", path: tabs, url: categories, icon: 'fas fa-stream' }
   - { name: "Tags", path: tabs, url: tags, icon: 'fas fa-tags' }
   - { name: "Archives", path: tabs, url: archives, icon: 'fas fa-archive'}
