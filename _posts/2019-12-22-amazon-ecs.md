@@ -22,11 +22,11 @@ A container is a standard unit of software that packages up code and all its dep
 
 ## Container Orchestration
 
-**1**. What if we need to scale, i.e. need multiple multiple containers and multiple ec2 instances ?
-**2**. What if our ec2 instance goes down ? 
-**3**. What if we need to schedule few other service and batch jobs?
-**4**. How do we ensure zero downtime ?
-**5**. How do I get analytics and monitor performance of resources ?
+**1.** What if we need to scale, i.e. need multiple multiple containers and multiple ec2 instances ?
+**2.** What if our ec2 instance goes down ? 
+**3.** What if we need to schedule few other service and batch jobs?
+**4.** How do we ensure zero downtime ?
+**5.** How do I get analytics and monitor performance of resources ?
 
 ## Amazon ECS - Very High Level
 
