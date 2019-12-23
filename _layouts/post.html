@@ -55,8 +55,8 @@ layout: default
       {% endcapture %}
 
       <!-- Add lozad class into image tags. see: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
-      {% if post_content contains '<img src=' %}
-        {{ post_content | replace: '<img src=', '<img class="lozad" data-src=' }}
+      {% if post_content contains "img src=" %}
+        {{ post_content | replace: 'img src=', 'img class="lozad" data-src=' }}
       {% else %}
         {{ post_content }}
       {% endif %}
