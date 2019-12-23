@@ -5,7 +5,7 @@ categories: [AWS, ECS]
 tags: [aws]
 published: true
 seo:
-  date_modified: 2019-12-22 23:30:32 +0530
+  date_modified: 2019-12-23 08:10:55 +0530
 ---
 
 ## Containers - Overview
