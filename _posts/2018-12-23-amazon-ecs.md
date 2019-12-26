@@ -3,6 +3,7 @@ title: Amazon Elastic Compute Service (AWS ECS)
 date: '2018-12-23 11:41:00'
 categories: [AWS, ECS]
 tags: [aws]
+comments: true
 # image: " ../../assets/img/posts/amazon-ecs/Container-Overview-1.png"
 seo:
   date_modified: 2019-12-26 15:02:03 +0530
