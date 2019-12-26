@@ -5,7 +5,7 @@ categories: [Microservices, Security]
 tags: [rest, oauth, microservices]
 comments: true
 seo:
-  date_modified: 2019-12-23 10:39:15 +0530
+  date_modified: 2019-12-26 15:05:27 +0530
 ---
 
 ## Microservices - Overview
