@@ -48,7 +48,7 @@ layout: default
       {% capture post_content %}
       <div class="post-content">
         {% if page.image %}
-        <img class="img-rounded">
+        <img src="{{ page.image }}" class="img-rounded">
         {% endif %}
         {{ content }}
       </div>

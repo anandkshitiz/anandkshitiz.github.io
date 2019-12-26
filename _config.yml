@@ -9,23 +9,23 @@
   title: "Kshitiz Anand"
 
   description: "SMTS @ Athena Health"
-  
+
   # Replace with your domain, e.g. 'https://username.github.io'
   url: 'https://anandkshitiz.github.io/'
-  
+
   author: Kshitiz Anand                  # change to your full name
-  
+
   avatar: 'https://avatars3.githubusercontent.com/u/23467894?s=460&v=4'   # Support network resources.
-  
+
   github:
     username: anandkshitiz             # change to your github username
-  
+
   twitter:
     username: anandkshitiz            # change to your twitter username
 
   linkedin:
     username: anandkshitiz
-  
+
   social:
     name: Kshitiz Anand                  # it will shows as the copyright owner in Footer
     email: anandkshitiz@gmail.com             # change to your email address
@@ -36,14 +36,14 @@
       # - https://github.com/anandkshitiz       # change to your github homepage
       # Uncomment below to add more social links
       # - https://www.facebook.com/username
-  
+
   google_site_verification: google_meta_tag_verification # change to your verification string
-  
+
   #--------------------------
-  
+
   # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
   timezone: Asia/Kolkata
-  
+
   google_analytics:
     # Fill with your Google Analytics ID
     id: '145426123'
@@ -53,28 +53,28 @@
     # superProxy baseURL and URL, only valid when `google_analytics.pv` is set to 'true'
     proxy_baseurl: ''
     proxy_url: ''
-  
-  
+
+
   disqus:
     shortname: 'anandkshitiz'   # Change to your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
-    comments: false        # boolean type, the global switch for posts comments.
-  
+    comments: true        # boolean type, the global switch for posts comments.
+
   # The year your website was first run.
   first_run: 2019
-  
+
   # boolean type, global switch for ToC in posts.
   toc: true
-  
-  
+
+
   # if your site type is Project Pages site, change below value to '/projectname'
   baseurl: ''
-  
+
   paginate: 10
-  
+
   markdown: kramdown
-  
+
   highlighter: rouge
-  
+
   kramdown:
     input: GFM
     syntax_highlighter: rouge
@@ -86,9 +86,9 @@
       block:
         line_numbers: true
         start_line: 1
-  
+
   permalink: /posts/:title/
-  
+
   defaults:
     -
       scope:
@@ -142,11 +142,11 @@
           -
             label: Home
             url: /
-  
+
   sass:
     sass_dir: /assets/css
     style: compressed
-  
+
   compress_html:
     clippings: all
     comments: ["<!-- ", " -->"]
@@ -155,7 +155,7 @@
     blanklines: false
     ignore:
       envs: []
-  
+
   exclude:
     - vendor/       # Avoid Jekyll mistakenly read the vender directory on Travis-CI's VM .
     - Gemfile.lock
@@ -164,7 +164,7 @@
     - build.sh
     - init.sh
     - pv.sh
-  
+
   sitemap_exclude:  # Sitemap will exclude the following items.
     - /norobots/
     - /assets/
@@ -175,4 +175,3 @@
     - /404.html
     - /redirects.json
     - /search.json
-  
