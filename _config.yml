@@ -56,7 +56,7 @@
 
 
   disqus:
-    shortname: 'anandkshitiz-github-io'   # Change to your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+    shortname: 'kshitizanandblog'   # Change to your Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
     comments: true        # boolean type, the global switch for posts comments.
 
   # The year your website was first run.
