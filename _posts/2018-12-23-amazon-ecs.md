@@ -5,7 +5,7 @@ categories: [AWS, ECS]
 tags: [aws]
 # image: " ../../assets/img/posts/amazon-ecs/Container-Overview-1.png"
 seo:
-  date_modified: 2019-12-24 00:18:33 +0530
+  date_modified: 2019-12-26 15:02:03 +0530
 ---
 
 ## Containers - Overview
