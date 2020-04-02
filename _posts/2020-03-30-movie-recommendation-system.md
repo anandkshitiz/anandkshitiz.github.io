@@ -34,7 +34,7 @@ A -> B
 ```
 
 {% plantuml %}
-K -> D
+[First] - [Second]
 {% endplantuml %}
 
 ## Using a Relational Database

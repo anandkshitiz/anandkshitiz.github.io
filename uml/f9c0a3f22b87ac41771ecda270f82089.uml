@@ -1,5 +1,5 @@
 @startuml
 
-K -> D
+[First] - [Second]
 
 @enduml

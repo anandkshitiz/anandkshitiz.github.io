@@ -8,7 +8,7 @@ group :jekyll_plugins do
   gem 'jekyll-redirect-from'
   gem 'jekyll-seo-tag'
   gem 'github-pages'
-  gem 'jekyll-plantuml'
+  gem 'jekyll-plantuml-url'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
