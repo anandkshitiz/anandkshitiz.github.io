@@ -17,7 +17,7 @@ if [[ ! -z $(git status -s) ]]; then
   exit 1
 fi
 
-python3.8 _scripts/py/init_all.py
+python _scripts/py/init_all.py
 
 find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 
