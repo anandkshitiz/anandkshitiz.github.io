@@ -25,7 +25,7 @@ Top 5 movies
 
 ## Using In Memory Data Structure
 
-```java
+<!-- ```java
 List<Movies>
 ```
 
@@ -35,7 +35,7 @@ A -> B
 
 {% plantuml %}
 [First] - [Second]
-{% endplantuml %}
+{% endplantuml %} -->
 
 ## Using a Relational Database
 
