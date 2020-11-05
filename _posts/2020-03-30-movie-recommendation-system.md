@@ -25,18 +25,6 @@ Top 5 movies
 
 ## Using In Memory Data Structure
 
-<!-- ```java
-List<Movies>
-```
-
-```puml
-A -> B
-```
-
-{% plantuml %}
-[First] - [Second]
-{% endplantuml %} -->
-
 ## Using a Relational Database
 
 ## Advanced solution using RDS, NO SQL , Caching etc.
