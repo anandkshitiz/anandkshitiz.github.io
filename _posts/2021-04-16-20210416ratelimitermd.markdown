@@ -8,7 +8,7 @@ seo:
   date_modified: 2021-04-16 08:49:30 +0530
 ---
 
-## API Rate Limiter - Overview
+## Overview
 
 Rate limiting is an API's configured(and often agreed upon) behaviour to reject sender's request in case the number of request over a window of time crosses the threshold.
 
@@ -31,4 +31,86 @@ Date: Sun, 18 April 2018 21:33:25 GMT
 X-Rate-Limit-Limit: 1200
 X-Rate-Limit-Remaining: 0
 X-Rate-Limit-Reset: 1618728633175
+```
+
+## Design an API Rate Limiter
+
+Before designing an actual full-fledged API Rate Limiter, let's write a very simple rate-limiter which caps the number of request to a Java method to 10/min.
+
+``` Java
+/*
+ * Copyright (c) 2019 athenahealth, Inc. All Rights Reserved.
+ */
+package org.anandkshitiz.ratelimiter.implementation;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.anandkshitiz.ratelimiter.config.RateLimiterConfig;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @author akshitiz
+ * @since 15/04/21
+ */
+public class MyCustomRateLimiter {
+    private final int MAX_SIZE = 10;
+    private final Map<String, APIRateLimiter> registeredAPIs;
+
+    private static Logger log = LoggerFactory.getLogger(MyCustomRateLimiter.class);
+
+    MyCustomRateLimiter() {
+        registeredAPIs = new HashMap<>();
+
+    }
+
+    boolean configure(RateLimiterConfig rateLimiterConfig) {
+        // TO DO : do validation
+        if (registeredAPIs.size() < MAX_SIZE) {
+            registeredAPIs.put(rateLimiterConfig.name(), new APIRateLimiter(rateLimiterConfig));
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+     boolean isRateLimited(String name) {
+
+        if (registeredAPIs.containsKey(name)) {
+            APIRateLimiter apiRateLimiter = registeredAPIs.get(name);
+            long currentTime = System.currentTimeMillis();
+            long timeElapsedSinceBucketStart = currentTime - apiRateLimiter.getStartTime();
+            log.info("Count = {}, Elapsed = {} ms", apiRateLimiter.getCount(), timeElapsedSinceBucketStart);
+            if (apiRateLimiter.getStartTime() == 0L) {
+                log.debug("Started");
+                apiRateLimiter.setStartTime(currentTime);
+                apiRateLimiter.setCount(apiRateLimiter.getCount() + 1);
+                return false;
+            } else if (timeElapsedSinceBucketStart >= apiRateLimiter.rateLimiterConfig.durationInSeconds() * 1000L) {
+                log.debug("Rate Limiting Period Time Elapsed. Resetting the count");
+                apiRateLimiter.setStartTime(currentTime);
+                apiRateLimiter.setCount(1);
+                return false;
+            } else if (timeElapsedSinceBucketStart < apiRateLimiter.rateLimiterConfig.durationInSeconds() * 1000L
+                    && apiRateLimiter.getCount() > apiRateLimiter.getRateLimiterConfig().maxRequest()) {
+                log.debug("Rate limit count exceeded");
+                return true;
+            } else if (timeElapsedSinceBucketStart < apiRateLimiter.rateLimiterConfig.durationInSeconds() * 1000L
+                    && apiRateLimiter.getCount() < apiRateLimiter.getRateLimiterConfig().maxRequest()) {
+                log.debug("Rate Limiting Period Time Elapsed.");
+                apiRateLimiter.setCount(apiRateLimiter.getCount() + 1);
+                return false;
+            } else {
+                log.debug("Current Count equals maximum count in the bucket");
+                apiRateLimiter.setCount(apiRateLimiter.getCount() + 1);
+                return false;
+            }
+        } else {
+            log.debug("rate limit not configured");
+            return false;
+        }
+    }
+}
 ```
