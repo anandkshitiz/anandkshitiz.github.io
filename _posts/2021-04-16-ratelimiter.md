@@ -35,10 +35,12 @@ X-Rate-Limit-Reset: 1618728633175
 
 ## Design an API Rate Limiter
 
+
+### Simple Rate Limiter
+
 Before designing an actual full-fledged API Rate Limiter, let's write a very simple rate-limiter which caps the number of request to a Java method to 10/min.
 
-<details>
-	<summary>RateLimiterConfig.java</summary>
+RateLimiter Configuration --> This should be implemented by the sender to define the configurations
 
 ```java
 package org.anandkshitiz.ratelimiter.config;
@@ -55,13 +57,8 @@ public interface RateLimiterConfig {
 
     String name();
 }
-
 ```
-</details>
-
-<details>
-<summary>APIRateLimit.java</summary>
-<p>
+From the API perspective, define an APIRateLimiter classs which will store the rate-limiter configuration of a particular API and its current state
 
 ``` java
 /*
@@ -109,10 +106,3 @@ public class APIRateLimiter {
     }
 }
 ```
-
-</p>
-</details>
-
-
-
-
