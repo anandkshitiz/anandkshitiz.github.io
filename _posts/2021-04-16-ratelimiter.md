@@ -37,20 +37,82 @@ X-Rate-Limit-Reset: 1618728633175
 
 Before designing an actual full-fledged API Rate Limiter, let's write a very simple rate-limiter which caps the number of request to a Java method to 10/min.
 
-``` java
+<details>
+	<summary>RateLimiterConfig.java</summary>
+
+```java
 package org.anandkshitiz.ratelimiter.config;
 
-
+/**
  * @author anandkshitiz
  * @since 15/04/21
  */
 public interface RateLimiterConfig {
 
-    int maxRequest();
+    int limitForPeriod();
 
-    int durationInSeconds();
+    int limitPeriodInSeconds();
 
     String name();
 }
+
 ```
+</details>
+
+<details>
+<summary>APIRateLimit.java</summary>
+<p>
+
+``` java
+/*
+ * Copyright (c) 2019 athenahealth, Inc. All Rights Reserved.
+ */
+package org.anandkshitiz.ratelimiter.implementation;
+
+import org.anandkshitiz.ratelimiter.config.RateLimiterConfig;
+
+/**
+ * @author anandkshitiz
+ * @since 15/04/21
+ */
+public class APIRateLimiter {
+    RateLimiterConfig rateLimiterConfig;
+    private long startTime = 0L;
+    private long count = 0L;
+
+    APIRateLimiter(RateLimiterConfig rateLimiterConfig) {
+        this.rateLimiterConfig = rateLimiterConfig;
+    }
+
+    public RateLimiterConfig getRateLimiterConfig() {
+        return rateLimiterConfig;
+    }
+
+    public void setRateLimiterConfig(RateLimiterConfig rateLimiterConfig) {
+        this.rateLimiterConfig = rateLimiterConfig;
+    }
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
+    }
+
+    public long getCount() {
+        return count;
+    }
+
+    public void setCount(long count) {
+        this.count = count;
+    }
+}
+```
+
+</p>
+</details>
+
+
+
 
