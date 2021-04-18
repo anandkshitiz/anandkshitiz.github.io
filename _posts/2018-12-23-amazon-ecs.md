@@ -12,14 +12,14 @@ seo:
 
 ## Containers - Overview
 
-We often face the problem where in an application shared by the Dev team doesn't work in QA environmet or we are unable to run an applicatiom shared by our friend in our own laptop because we don't have the right version of dependencies used by the application.
+We often face the problem where in an application shared by the Dev team doesn't work in QA environment or we are unable to run an application shared by our friend in our own laptop because we don't have the right version of dependencies used by the application.
 
-Well, containers are the solution to this problem. As, with a container, an application and its dependencies are shipped together under a container image.This container image can run without any dependencies issue in any environmet whether it is a private data center, public cloud or a personal laptop.
+Well, containers are the solution to this problem. As, with a container, an application and its dependencies are shipped together under a container image.This container image can run without any dependencies issue in any environment whether it is a private data centre, public cloud or a personal laptop.
 
 
 > **A container is a standard unit of software that packages up code and all its dependencies; so the application runs quickly and reliably from one computing environment to another.**
 
-So, in order to successfully run a springboot application in any environmet, we need to create a container image which contains details about all its dependences like the Java runtime, maven, git etc. This container image can then be shipped to any environment where it can successfully run as a container.
+So, in order to successfully run a spring-boot application in any environment, we need to create a container image which contains details about all its dependences like the Java runtime, maven, git etc. This container image can then be shipped to any environment where it can successfully run as a container.
 
 ## Container Orchestration
 
@@ -31,7 +31,7 @@ In real life scenarios, running a single container might not be sufficient. We w
 4. How to ensure zero downtime even during the time of deployment ?
 5. How to get useful analytics and monitor performance of the resources ?
 
-All, or most of the above problems, can be solved using some Container Orchestration system. There are a number of Container Orchestration system availale today. Most famous are Kubernetes, Amazon ECS, Marathon, Docker Swarm etc.
+All, or most of the above problems, can be solved using some Container Orchestration system. There are a number of Container Orchestration system available today. Most famous are Kubernetes, Amazon ECS, Marathon, Docker Swarm etc.
 
 In this article let's try to learn what is Amazon ECS and how to run different applications in ECS.
 
@@ -46,7 +46,7 @@ ECS is a regional service which allows running containers in a multi availabilit
 **Create Task Definition** &rarr; **Define Service** &rarr; **Run Task**
 
 1. Create Task Definition
-* Define Container specifications.
+* Define Container specification
 * Memory
 * CPU
 * Environment Variables
