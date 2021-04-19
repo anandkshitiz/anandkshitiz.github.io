@@ -9,8 +9,9 @@ seo:
 ---
 
 ## Overview
+{: .themeBlue}
 
-Rate limiting is an API's configured(and often agreed upon) behaviour to reject sender's request in case the number of request over a window of time crosses the threshold.
+Rate limiting is an API's configured behaviour to reject sender's request in case the number of request over a window of time crosses a limit.
 
 Example : An API which generates an authentication token can cap the maximum number of token generation request sent by a specific client(or/and from a specific ip address) in a period of 1 hour. Let's say 1200 request/hour.
 
@@ -34,21 +35,19 @@ X-Rate-Limit-Reset: 1618728633175
 ```
 
 ## Design an API Rate Limiter
-
+{: .themeBlue}
 
 ### Simple Rate Limiter
+{: .themeBlue}
 
 Before designing an actual full-fledged API Rate Limiter, let's write a very simple rate-limiter which caps the number of request to a Java method to 10/min.
 
-RateLimiter Configuration --> This should be implemented by the sender to define the configurations
+#### Define RateLimiter Configuration
+{: .themeBlue}
+
+This should be implemented by the sender to define the configurations
 
 ```java
-package org.anandkshitiz.ratelimiter.config;
-
-/**
- * @author anandkshitiz
- * @since 15/04/21
- */
 public interface RateLimiterConfig {
 
     int limitForPeriod();
@@ -61,17 +60,6 @@ public interface RateLimiterConfig {
 From the API perspective, define an APIRateLimiter classs which will store the rate-limiter configuration of a particular API and its current state
 
 ``` java
-/*
- * Copyright (c) 2019 athenahealth, Inc. All Rights Reserved.
- */
-package org.anandkshitiz.ratelimiter.implementation;
-
-import org.anandkshitiz.ratelimiter.config.RateLimiterConfig;
-
-/**
- * @author anandkshitiz
- * @since 15/04/21
- */
 public class APIRateLimiter {
     RateLimiterConfig rateLimiterConfig;
     private long startTime = 0L;
