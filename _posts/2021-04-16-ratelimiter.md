@@ -11,12 +11,13 @@ seo:
 ## Overview
 {: .themeBlue}
 
-Rate limiting is an API's configured behaviour to reject sender's request in case the number of request over a window of time crosses a limit.
+Rate limiting is an API's configured behaviour to reject sender's request in case the number of requests over a window of time crosses a limit or threshold.
 
-Example : An API which generates an authentication token can cap the maximum number of token generation request sent by a specific client(or/and from a specific ip address) in a period of 1 hour. Let's say 1200 request/hour.
+> **Example >> An API which generates an authentication token can cap the maximum number of token generation request sent by a specific client(or/and from a specific ip address) in a period of 1 hour. Let's say 1200 request/hour.**
+{: .themeBlue}
 
-In terms of rate-limiting, following scenarios can take place when a sender sends a request to a REST API
-1. Rate Limit not reached : In this case, the API sends a valid response(2xx, 5xx etc.) as per the request. Additionally, API can also send few headers which provide information about the current status of rate-limit like :
+In terms of rate-limiting, following scenarios can take place when a sender sends a request to an API
+1. Rate Limit not reached >> In this case, the API sends a valid response(2xx, 5xx etc.) as per the request. Additionally, API can also send few headers which provide information about the current status of rate-limit like :
 
 ```
 HTTP/1.1 200 OK
@@ -34,7 +35,7 @@ X-Rate-Limit-Remaining: 0
 X-Rate-Limit-Reset: 1618728633175
 ```
 
-## Design an API Rate Limiter
+## Design a custom API Rate Limiter
 {: .themeBlue}
 
 ### Simple Rate Limiter
@@ -198,3 +199,7 @@ public class APIRateLimiter {
     }
 }
 ```
+
+## Open Source Rate Limiters
+{: .themeBlue}
+{:toc}
