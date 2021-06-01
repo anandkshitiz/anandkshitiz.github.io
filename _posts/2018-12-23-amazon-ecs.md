@@ -4,10 +4,10 @@ date: '2018-12-23 11:41:00'
 categories: [AWS, ECS]
 tags: [aws]
 comments: true
-image: " ../../assets/img/posts/amazon-ecs/Container-Overview-1.png"
+image: ' ../../assets/img/posts/amazon-ecs/Container-Overview-1.png'
 pin: true
 seo:
-  date_modified: 2019-12-26 15:43:52 +0530
+  date_modified: 2021-04-18 13:50:24 +0530
 ---
 
 ## Containers - Overview

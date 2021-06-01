@@ -1,11 +1,11 @@
 ---
 title: Rate Limiter
-date: "2021-04-16 08:49:30 +0530"
+date: 2021-04-16 08:49:30 +0530
 categories: [System Design]
 tags: [api-gateway, design]
 comments: true
 seo:
-  date_modified: 2021-04-16 08:49:30 +0530
+  date_modified: 2021-05-31 20:16:51 +0530
 ---
 
 ## Overview
