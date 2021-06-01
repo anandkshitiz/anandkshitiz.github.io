@@ -33,6 +33,28 @@
   <link href="css/bootstrap.min.css?ver=1.2.0" rel="stylesheet">
   <link href="css/aos.css?ver=1.2.0" rel="stylesheet">
   <link href="css/main.css?ver=1.2.0" rel="stylesheet">
+  <!-- ga -->
+  {% if jekyll.environment == 'production' %}
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9L6SH9PEFX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-9L6SH9PEFX');
+  </script>
+
+  {% if site.google_analytics.proxy_baseurl and site.google_analytics.pv %}
+  <link rel="preconnect" href="{{ site.google_analytics.proxy_baseurl }}" crossorigin="use-credentials">
+  <link rel="dns-prefetch" href="{{ site.google_analytics.proxy_baseurl }}">
+  {% endif %}
+  {% endif %}
   <noscript>
     <style type="text/css">
       [data-aos] {
