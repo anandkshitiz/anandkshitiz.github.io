@@ -46,7 +46,7 @@
 
   google_analytics:
     # Fill with your Google Analytics ID
-    id: 'G-CFCG2158C6'
+    id: 'G-9L6SH9PEFX'
     # The Google Analytics pageviews switch.
     # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
     pv: false
