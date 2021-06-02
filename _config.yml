@@ -32,8 +32,8 @@
     links:
       # The first element serves as the copyright owner's link
       - https://www.linkedin.com/in/anandkshitiz/
-      # - https://twitter.com/anandkshitiz      # change to your twitter homepage
-      # - https://github.com/anandkshitiz       # change to your github homepage
+      - https://twitter.com/anandkshitiz      # change to your twitter homepage
+      - https://github.com/anandkshitiz       # change to your github homepage
       # Uncomment below to add more social links
       # - https://www.facebook.com/username
 
