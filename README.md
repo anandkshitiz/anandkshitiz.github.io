@@ -152,6 +152,11 @@ The build results will be stored in the root directory of `<username>.github.io`
 
 For more information, please see the [tutorial](https://chirpy.cotes.info/categories/tutorial/). In the meanwhile, a copy of the tutorial is also available on the [Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
 
+## My Notes
+Currently incremental changes can be made using following:
+
+``` bundle exec jekyll s ```
+
 
 ## License
 
