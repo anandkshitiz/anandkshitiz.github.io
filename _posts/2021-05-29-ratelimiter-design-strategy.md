@@ -1,11 +1,11 @@
 ---
 title: Rate Limiter Design & Strategy
 date: 2021-05-29 08:49:30 +0530
-categories: [System Design , Rate Limiter, Design & Strategy]
+categories: [System Design, Rate Limiter, Design & Strategy]
 tags: [api-gateway, design]
 comments: true
 seo:
-  date_modified: 2021-05-31 20:16:51 +0530
+  date_modified: 2021-06-03 04:06:29 +0530
 ---
 
 ## Overview
