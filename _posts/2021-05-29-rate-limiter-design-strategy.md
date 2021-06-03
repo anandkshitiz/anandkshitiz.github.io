@@ -18,7 +18,7 @@ Even with this setup in place and accepting the fact that the client can retry f
 
 This is a good use case for implementing throttling using rate-limiting for individual APIs.
 
-In this post I have tried to share my understanding of the concept of Rate Limiter and have provided a high level design and strategy while implementing Rate Limiter. I have also created a separate post for coding implementation of Rate Limiter using Java [here]({% post_url 2021-05-29-rate-limiter-implementation %}) .
+In this post I have tried to share my understanding of the concept of Rate Limiter and have provided a high level design and strategy while implementing Rate Limiter. I have also created a separate post for coding implementation of Rate Limiter using Java [here]({% post_url 2021-06-03-rate-limiter-implementation %}) .
 
 ## What is rate limiting in software systems ?
 {: .themeBlue}
@@ -133,4 +133,4 @@ In my opinion, every system should implement some kind of rate-limiting solution
 
 ## How to develope a simple rate limiting sdk in Java ?
 
-You can refer [this post]({% post_url 2021-05-29-rate-limiter-implementation %}) for coding implementation of a simple rate limiter in Java.
+You can refer [this post]({% post_url 2021-06-03-rate-limiter-implementation %}) for coding implementation of a simple rate limiter in Java.

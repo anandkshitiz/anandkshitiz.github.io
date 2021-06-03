@@ -10,20 +10,15 @@ seo:
 
 ## Overview
 {: .themeBlue}
+For a detailed overview of Rate Limiting, you can refer my earlier post [here]({% post_url 2021-05-29-rate-limiter-design-strategy %}) .
 
 ## Types of Rate Limiting Algorithms
 {: .themeBlue}
 
+<WIP>
 
-## Design custom API Rate Limiter
-{: .themeBlue}
 
-### Rate Limiter for 
-{: .themeBlue}
-
-Before designing an actual full-fledged API Rate Limiter, let's code for a simple rate-limiter.
-
-#### Implementation of a custom rate-limiter
+## Implementation of a custom rate-limiter
 {: .themeBlue}
 
 ```java
