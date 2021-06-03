@@ -4,6 +4,7 @@ date: 2021-05-29 08:49:30 +0530
 categories: [System Design, Rate Limiter, Design & Strategy]
 tags: [api-gateway, design]
 comments: true
+pin: true
 seo:
   date_modified: 2021-06-03 06:14:15 +0530
 ---
@@ -11,9 +12,13 @@ seo:
 ## Introduction
 {: .themeBlue}
 
-Recently, I got a chance to introduce Rate Limiter for the purpose of throttling API requests coming to the servers. The servers in the system have been benchmarked against maximum and average rps(requests per second) and there is an auto-scaling in place which can cater to an increase in load. Even with this setup in place and accepting the fact that the client can retry for any failed transaction, in case of high load if auto-scaling takes more time, the new servers will get over-whelmed with the requests which could result in resource starvation and result in more failed transactions and total chaos in the system. Moreover, auto-scaling can also not be infinite as it can lead to an unplanned infrastructure cost. This is a good use case for implementing throttling using rate-limiting for individual APIs.
+Recently, I got a chance to implement Rate Limiter for the purpose of throttling API requests coming to the servers. The servers in the system have been benchmarked against maximum and average rps(requests per second) and there is an auto-scaling in place which can cater to an increase in load.
 
-In this post I have tried to share my understanding of the concept of Rate Limiter and provide a high level design and strategy behind Rate Limiter. I have also created a separate post for implementation of Rate Limiter using Java [here]({% post_url 2021-05-29-rate-limiter-implementation %}) .
+Even with this setup in place and accepting the fact that the client can retry for any failed transaction, in case of high load if auto-scaling takes more time, the new servers will get overwhelmed with the requests which could result in resource starvation and result in more failed transactions and total chaos in the system. Moreover, auto-scaling can also not be infinite as it can lead to an unplanned infrastructure cost. 
+
+This is a good use case for implementing throttling using rate-limiting for individual APIs.
+
+In this post I have tried to share my understanding of the concept of Rate Limiter and have provided a high level design and strategy while implementing Rate Limiter. I have also created a separate post for coding implementation of Rate Limiter using Java [here]({% post_url 2021-05-29-rate-limiter-implementation %}) .
 
 ## What is rate limiting in software systems ?
 {: .themeBlue}
@@ -69,10 +74,63 @@ X-Rate-Limit-Reset: 1622603529
 
 In the above example, the rate limit threshold for the API is set to 1200 and has already been reached. So, user can't make any more request before Wednesday, 2 June 2021 3:12:09 AM GMT(1622603529) when the rate limit window would be reset.
 
-## High Level Design of Rate Limiter
+## High Level Designs of Rate Limiter
 {: .themeBlue}
 
+### 1. _Simple rate limiter design_
 
+![Simple stateless rate-limiter]({{ site.baseurl }}/assets/img/posts/rate-limiter/stateless-rate-limiter.png)
+_Simple rate limiter design_
+
+A simple design of rate limiter will be to cap the requests sent on a particular server if the requests per second goes above the benchmarked number. As shown in the above diagram, the rate limiter is part of the application and will cap the requests on the server based on only the individual server's state where it is running.
+
+Pros:
+* Very simple and easy to implement.
+* Effective when there is a need to throttle to reduce infrastructure cost and chaos because of excessive load.
+
+Cons:
+* It can't be used to rate-limit requests for a particular user, ip, user-groups, specific clients etc.
+
+### 2. _Stateful rate limiter design_
+
+Above mentioned design can be extended and the rate-limiting state(s) can be shared across servers by caching it using some caching solutions like Redis, Memcache etc.
+
+As shown in below diagram, here, the clients' ip address or user id can be used as a key with the current rate-limiting state variables as value. Since, the cache can be used across servers this solution can be used to limit requests across servers in a cluster unlike the previous design.
+
+![Stateful rate-limiter]({{ site.baseurl }}/assets/img/posts/rate-limiter/stateful-rate-limiter.png)
+_Stateful rate limiter design_
+
+Pros:
+* It can be used to rate-limit requests for a particular user, ip, user-groups, specific clients etc.
+
+Cons:
+* The rate-limiting system is tightly coupled with the server.
+
+### 3. _Decoupled Rate Limiter_
+
+Above mentioned design can be decoupled by running the Rate Limiter system outside of application server as shown in below diagram.
+
+![Decoupled rate-limiter]({{ site.baseurl }}/assets/img/posts/rate-limiter/rate-limiter.png)
+_Decoupled Rate Limiter_
+
+Pros:
+* Rate Limiter solution is decoupled and can be managed or maintained outside the application servers independently.
+
+Cons:
+* Management and maintenance of Rate Limiting system.
+
+### 4. _API gateway based rate limiter design_
+
+The above design can be further simplified by making the Rate Limiter part of the API Gateway system or using a 3rd party Cloud provider's API Gateway service which provides rate limiting.
+
+![API Gateway based rate-limiter]({{ site.baseurl }}/assets/img/posts/rate-limiter/api-gw-rate-limiter.png)
+_API gateway based rate limiter design_
 
 ## Conclusion
 {: .themeBlue}
+
+In my opinion, every system should implement some kind of rate-limiting solution(s) to minimize un-planned cost, attacks from hackers, un-warranted use by clients. This will also help in making the system highly available and provide a better experience to the client system(s).
+
+## How to develope a simple rate limiting sdk in Java ?
+
+You can refer [this post]({% post_url 2021-05-29-rate-limiter-implementation %}) for coding implementation of a simple rate limiter in Java.

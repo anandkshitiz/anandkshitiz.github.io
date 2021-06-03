@@ -19,7 +19,7 @@ Well, containers are the solution to this problem. As, with a container, an appl
 
 > **A container is a standard unit of software that packages up code and all its dependencies; so the application runs quickly and reliably from one computing environment to another.**
 
-So, in order to successfully run a spring-boot application in any environment, we need to create a container image which contains details about all its dependences like the Java runtime, maven, git etc. This container image can then be shipped to any environment where it can successfully run as a container.
+So, in order to successfully run a spring-boot application in any environment, we need to create a container image which contains details about all its dependencies like the Java runtime, maven, git etc. This container image can then be shipped to any environment where it can successfully run as a container.
 
 ## Container Orchestration
 
