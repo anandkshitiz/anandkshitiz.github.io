@@ -5,7 +5,7 @@ categories: [System Design, Rate Limiter, Implementation]
 tags: [api-gateway, design]
 comments: true
 seo:
-  date_modified: 2021-06-03 08:54:15 +0530
+  date_modified: 2021-06-03 06:14:15 +0530
 ---
 
 ## Overview
@@ -15,7 +15,6 @@ For a detailed overview of Rate Limiting, you can refer my earlier post [here]({
 ## Types of Rate Limiting Algorithms
 {: .themeBlue}
 
-<WIP>
 
 
 ## Implementation of a custom rate-limiter
