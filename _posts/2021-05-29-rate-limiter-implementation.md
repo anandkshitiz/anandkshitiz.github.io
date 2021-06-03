@@ -11,6 +11,9 @@ seo:
 ## Overview
 {: .themeBlue}
 
+## Types of Rate Limiting Algorithms
+{: .themeBlue}
+
 
 ## Design custom API Rate Limiter
 {: .themeBlue}
