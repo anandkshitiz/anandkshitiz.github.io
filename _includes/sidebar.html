@@ -7,7 +7,7 @@
 <div id="nav-wrap">
   <div id="profile-wrap" class="d-flex flex-column">
     <div id="avatar" class="d-flex justify-content-center">
-      <a href="{{ site.baseurl }}/" alt="avatar">
+      <a href="{{ site.baseurl }}/tabs/about" alt="avatar">
         {% assign avatar = site.avatar %}
         {% if avatar | slice: 0 == '/' %}
           {% assign avatar = avatar | prepend: site.baseurl %}
@@ -18,7 +18,7 @@
 
     <div class="profile-text mt-3">
       <div id="site-title">
-        <a href="{{ site.baseurl }}/">{{- site.title -}}</a>
+        <a href="{{ site.baseurl }}/tabs/about">{{- site.title -}}</a>
       </div>
       <div id="site-subtitle" class="font-italic">{{ site.description }}</div>
     </div>
