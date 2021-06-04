@@ -12,120 +12,112 @@ seo:
 {: .themeBlue}
 For a detailed overview of Rate Limiting, you can refer my earlier post [here]({% post_url 2021-05-29-rate-limiter-design-strategy %}) .
 
-## Types of Rate Limiting Algorithms
-{: .themeBlue}
-
-
-
 ## Implementation of a custom rate-limiter
 {: .themeBlue}
 
-```java
-public class MyCustomRateLimiter {
-    private final int MAX_SIZE = 100; // This caps the maximum number of APIs for which Rate Limiting can be configured by an application
-    private final Map<String, APIRateLimiter> registeredAPIs;
+Before implementing a custom rate limiter, let's see the use case under which we want to apply the rate limiting.
+Let's assume that we have a java method called ``` doSomething() ``` which we want to execute only 2 requests in a span of 1 second.
 
-    private static Logger log = LoggerFactory.getLogger(MyCustomRateLimiter.class);
-
-    MyCustomRateLimiter() {
-        registeredAPIs = new HashMap<>();
-    }
-
-    boolean configure(RateLimiterConfig rateLimiterConfig) {
-        // TO DO : do validation
-        if (registeredAPIs.size() < MAX_SIZE) {
-            registeredAPIs.put(rateLimiterConfig.name(), new APIRateLimiter(rateLimiterConfig));
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-     boolean isRateLimited(String name) {
-
-        if (registeredAPIs.containsKey(name)) {
-            APIRateLimiter apiRateLimiter = registeredAPIs.get(name);
-            long currentTime = System.currentTimeMillis();
-            long timeElapsedSinceBucketStart = currentTime - apiRateLimiter.getStartTime(); // This isn't thread safe
-            log.info("Count = {}, Elapsed = {} ms", apiRateLimiter.getCount(), timeElapsedSinceBucketStart);
-            if (apiRateLimiter.getStartTime() == 0L) {
-                log.debug("Started");
-                apiRateLimiter.setStartTime(currentTime);
-                apiRateLimiter.setCount(apiRateLimiter.getCount() + 1);
-                return false;
-            } else if (timeElapsedSinceBucketStart >= apiRateLimiter.rateLimiterConfig.limitPeriodInSeconds() * 1000L) {
-                log.debug("Rate Limiting Period Time Elapsed. Resetting the count");
-                apiRateLimiter.setStartTime(currentTime);
-                apiRateLimiter.setCount(1);
-                return false;
-            } else if (timeElapsedSinceBucketStart < apiRateLimiter.rateLimiterConfig.limitPeriodInSeconds() * 1000L
-                    && apiRateLimiter.getCount() > apiRateLimiter.getRateLimiterConfig().limitForPeriod()) {
-                log.debug("Rate limit count exceeded");
-                return true;
-            } else if (timeElapsedSinceBucketStart < apiRateLimiter.rateLimiterConfig.limitPeriodInSeconds() * 1000L
-                    && apiRateLimiter.getCount() < apiRateLimiter.getRateLimiterConfig().limitForPeriod()) {
-                log.debug("Rate Limiting Period Time Elapsed.");
-                apiRateLimiter.setCount(apiRateLimiter.getCount() + 1);
-                return false;
-            } else {
-                log.debug("Current Count equals maximum count in the bucket");
-                apiRateLimiter.setCount(apiRateLimiter.getCount() + 1);
-                return false;
-            }
-        } else {
-            log.debug("rate limit not configured");
-            return false;
-        }
-    }
-}
-```
-
-#### APIRateLimiter
+### How to use the Rate Limiter ?
 {: .themeBlue}
-```java
-public class APIRateLimiter {
-    RateLimiterConfig rateLimiterConfig;
-    private long startTime = 0L;
-    private long count = 0L;
 
-    APIRateLimiter(RateLimiterConfig rateLimiterConfig) {
-        this.rateLimiterConfig = rateLimiterConfig;
+In order to do that, we will define the Rate Limit configurations like ```limit for the period``` and ```limit period in seconds``` as shown below and configure the RateLimiter.
+``` java 
+DoSomethingRateLimiterConfig doSomethingRateLimiter =
+            new DoSomethingRateLimiterConfig("doSomething", 2, 1);
+RateLimiter rateLimiter = new RateLimiter();
+rateLimiter.configure(doSomethingRateLimiter);
+```
+Once this configuration is done, we can first check whether, the rate limit is reached or not by calling ```rateLimiter.isRateLimited("doSomething")``` and then execute the logic of the method ```doSomething()```. 
+
+The full source code to demonstrate how to use Rate Limiter in Java method can be seen in below test class called ```RateLimiterTest```. In this test case, I have created a fixed thread pool of size 2 so that we can test for concurrent scenarios as well.
+
+``` java
+import org.anandkshitiz.ratelimiter.config.RateLimiterConfig;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class RateLimiterTest {
+
+    RateLimiter rateLimiter = new RateLimiter();
+    private static final Logger LOGGER = LoggerFactory.getLogger(RateLimiterTest.class);
+    static class DoSomethingRateLimiterConfig implements RateLimiterConfig {
+
+        String name;
+        int limit;
+        int durationInSeconds;
+
+        DoSomethingRateLimiterConfig(String name, int maxRequest, int durationInSeconds) {
+            this.name = name;
+            this.limit = maxRequest;
+            this.durationInSeconds = durationInSeconds;
+        }
+
+        @Override
+        public String name() {
+            return name;
+        }
+
+        @Override
+        public int limitForPeriod() {
+            return limit;
+        }
+
+        @Override
+        public int limitPeriodInSeconds() {
+            return durationInSeconds;
+        }
+
     }
 
-    public RateLimiterConfig getRateLimiterConfig() {
-        return rateLimiterConfig;
+    @Test
+    public void isRateLimited() {
+        DoSomethingRateLimiterConfig doSomethingRateLimiter = new DoSomethingRateLimiterConfig("doSomething", 2, 1);
+        rateLimiter.configure(doSomethingRateLimiter);
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        for (int i = 0; i < 200000; i++) {
+            int finalI = i;
+            executorService.execute(() -> {
+                try {
+                    doSomething(finalI);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        executorService.shutdown();
+        while (!executorService.isTerminated()) {
+        }
+        LOGGER.debug("Finished all threads");
     }
 
-    public void setRateLimiterConfig(RateLimiterConfig rateLimiterConfig) {
-        this.rateLimiterConfig = rateLimiterConfig;
+    private void doSomething(int i) throws InterruptedException {
+        if (!rateLimiter.isRateLimited("doSomething")) {
+            Thread.sleep(1000);
+            LOGGER.debug("Processing {}",i);
+        } else {
+            LOGGER.debug("{} This is rate limited",i);
+        }
     }
 
-    public long getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(long startTime) {
-        this.startTime = startTime;
-    }
-
-    public long getCount() {
-        return count;
-    }
-
-    public void setCount(long count) {
-        this.count = count;
-    }
 }
-
 ```
 
+### Code for RateLimiter package implementation
+{: .themeBlue}
+
+We will first define an interface which should be implemented by the sender to define the configurations.
 #### Define RateLimiter Configuration
 {: .themeBlue}
-
-This should be implemented by the sender to define the configurations
-
 ```java
+/**
+ * @author anandkshitiz
+ * @since 15/04/21
+ */
 public interface RateLimiterConfig {
 
     int limitForPeriod();
@@ -135,16 +127,24 @@ public interface RateLimiterConfig {
     String name();
 }
 ```
-From the API perspective, define an APIRateLimiter class which will store the rate-limiter configuration of a particular API and its current state
 
-``` java
-public class APIRateLimiter {
+#### Define individual APIs state
+{: .themeBlue}
+```java
+import org.anandkshitiz.ratelimiter.config.RateLimiterConfig;
+
+/**
+ * @author anandkshitiz
+ * @since 15/04/21
+ */
+public class APIRateLimiterState {
     RateLimiterConfig rateLimiterConfig;
     private long startTime = 0L;
-    private long count = 0L;
+    private int availableTokens;
 
-    APIRateLimiter(RateLimiterConfig rateLimiterConfig) {
+    APIRateLimiterState(RateLimiterConfig rateLimiterConfig) {
         this.rateLimiterConfig = rateLimiterConfig;
+        this.availableTokens = rateLimiterConfig.limitForPeriod();
     }
 
     public RateLimiterConfig getRateLimiterConfig() {
@@ -163,16 +163,82 @@ public class APIRateLimiter {
         this.startTime = startTime;
     }
 
-    public long getCount() {
-        return count;
+    public int getAvailableTokens() {
+        return availableTokens;
     }
 
-    public void setCount(long count) {
-        this.count = count;
+    public void setAvailableTokens(int availableTokens) {
+        this.availableTokens = availableTokens;
     }
 }
 ```
-
-## Open Source Rate Limiters
+#### Rate Limiter Implementation class
 {: .themeBlue}
-{:toc}
+
+In this post, we will be implementing a token based rate limiter, where each API request will try to fetch a token, if there are available tokens for the API that request will be allowed to happen, if not, the request will be rate limited. The tokens will be regenerated after the rate limiting window is over.
+
+So, following scenarios can take place :
+1. For the very first API call, we will set the start time to current time, decrease the available token count by 1 and then allow the request to happen as we have available tokens.
+2. If the Rate Limiting Period Time has elapsed, we will reset the start time to current time and available token count to maximum token count - 1 and allow the request to happen as this is a new window.
+3. If there are available tokens and the rate limiting window has not passed, we will allow the request to happen by decreasing the available tokens by 1.
+
+```java
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.anandkshitiz.ratelimiter.config.RateLimiterConfig;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @author akshitiz
+ * @since 15/04/21
+ */
+public class RateLimiter {
+
+    private final Map<String, APIRateLimiterState> registeredAPIs;
+    private static final Logger LOGGER = LoggerFactory.getLogger(RateLimiter.class);
+
+    RateLimiter() {
+        registeredAPIs = new HashMap<>();
+    }
+
+    void configure(RateLimiterConfig rateLimiterConfig) {
+        // TO DO : do validation
+        registeredAPIs.put(rateLimiterConfig.name(), new APIRateLimiterState(rateLimiterConfig));
+    }
+
+    synchronized boolean isRateLimited(String name) {
+
+        if (registeredAPIs.containsKey(name)) {
+            APIRateLimiterState apiRateLimiterState = registeredAPIs.get(name);
+            long currentTime = System.currentTimeMillis();
+            long timeElapsedSinceBucketStart = currentTime - apiRateLimiterState.getStartTime();
+            LOGGER.debug("Available Tokens = {}, Elapsed = {} ms", apiRateLimiterState.getAvailableTokens(), timeElapsedSinceBucketStart);
+            if (apiRateLimiterState.getStartTime() == 0L) {
+                LOGGER.debug("First API call. Setting the start time to current time, decreasing the available token count by 1 and allowing the request");
+                apiRateLimiterState.setStartTime(currentTime);
+                apiRateLimiterState.setAvailableTokens(apiRateLimiterState.getAvailableTokens() - 1);
+                return false;
+            } else if (timeElapsedSinceBucketStart >= apiRateLimiterState.rateLimiterConfig.limitPeriodInSeconds() * 1000L) {
+                LOGGER.debug("Rate Limiting Period Time Elapsed. Resetting the start time to current time and token count to original token count -1 and allowing the request";
+                apiRateLimiterState.setStartTime(currentTime);
+                apiRateLimiterState.setAvailableTokens(apiRateLimiterState.getRateLimiterConfig().limitForPeriod() - 1);
+                return false;
+            } else if (timeElapsedSinceBucketStart < apiRateLimiterState.rateLimiterConfig.limitPeriodInSeconds() * 1000L
+                    && apiRateLimiterState.getAvailableTokens() >= 1) {
+                LOGGER.debug("Rate limit not reached, decreasing the available token counts by 1 and allowing the request");
+                apiRateLimiterState.setAvailableTokens(apiRateLimiterState.getAvailableTokens() - 1);
+                return false;
+            } else {
+                LOGGER.debug("Rate Limit threshold reached");
+                return true;
+            }
+        } else {
+            LOGGER.debug("Rate limit not configured for the endpoint {}" , name);
+            return false;
+        }
+    }
+}
+```
