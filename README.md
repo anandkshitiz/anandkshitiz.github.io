@@ -157,6 +157,13 @@ Currently incremental changes can be made using following:
 
 ``` bundle exec jekyll s ```
 
+Before posting a post to github, use following:
+``` 
+1. git add .
+2. git commit -m "All posts" 
+3. ./init.sh ==> This will add modified tags, seo details, categories etc. and will make an automated commit
+4. git push
+```
 
 ## License
 
