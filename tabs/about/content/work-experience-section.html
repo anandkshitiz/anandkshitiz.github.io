@@ -96,15 +96,22 @@
         </div>
     </div>
 
-    <!-- Lead Member Of Technical Staff at Athena Health -->
+    <!-- Combined Athenahealth Experience -->
     <div class="timeline-card timeline-card-primary card shadow-sm">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-2">
                 <div>
-                    <h4 class="mb-0">Lead Member Of Technical Staff</h4>
+                    <h4 class="mb-0">Technical Staff</h4>
                     <div class="text-muted">Athena Health, Chennai</div>
                 </div>
-                <div class="text-muted text-end">Jul 2020 - Dec 2021</div>
+                <div class="text-muted text-end">Apr 2018 - Dec 2021</div>
+            </div>
+            
+            <div class="role-progression mb-3">
+                <span class="position-badge">Lead Member of Technical Staff</span>
+                <span class="date-badge">Jul 2020 - Dec 2021</span>
+                <span class="position-badge ms-2">Senior Member of Technical Staff</span>
+                <span class="date-badge">Apr 2018 - Jun 2020</span>
             </div>
             
             <div class="experience-item">
@@ -115,8 +122,11 @@
                             <strong>Key Achievements:</strong>
                             <ul class="achievement-list">
                                 <li>Led development of highly available, scalable platform processing 1000 requests/second for 116K+ customers</li>
-                                <li>Consistently delivered high-quality code with >95% test coverage</li>
+                                <li>Developed event-driven archiving platform using Kafka for 115K+ providers</li>
+                                <li>Provisioned AWS infrastructure (ECS, RDS, API Gateway, CI-CD pipeline)</li>
                                 <li>Established CI/CD processes and DevOps culture for the decision engine team</li>
+                                <li>Implemented real-time monitoring using Prometheus with Grafana dashboards</li>
+                                <li>Maintained >95% test coverage across codebase</li>
                             </ul>
                         </div>
                     </div>
@@ -127,44 +137,6 @@
                             <span class="tech-badge">Kafka</span>
                             <span class="tech-badge">AWS</span>
                             <span class="tech-badge">Microservices</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Senior Member Of Technical Staff at Athena Health -->
-    <div class="timeline-card timeline-card-primary card shadow-sm">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center mb-2">
-                <div>
-                    <h4 class="mb-0">Senior Member Of Technical Staff</h4>
-                    <div class="text-muted">Athena Health, Chennai</div>
-                </div>
-                <div class="text-muted text-end">Apr 2018 - Jun 2020</div>
-            </div>
-            
-            <div class="experience-item">
-                <h5 class="project-title">Decision Engine Platform</h5>
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="mb-2">
-                            <strong>Key Achievements:</strong>
-                            <ul class="achievement-list">
-                                <li>Developed scalable, secure microservices and event-driven archiving platform for 115K+ providers</li>
-                                <li>Provisioned AWS infrastructure (ECS, RDS, API Gateway, CI-CD pipeline, Kafka)</li>
-                                <li>Implemented real-time monitoring using Prometheus with Grafana dashboards</li>
-                                <li>Maintained 98% test coverage across codebase</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="tech-stack">
-                            <strong>Technologies:</strong>
-                            <span class="tech-badge">Java</span>
-                            <span class="tech-badge">Kafka</span>
-                            <span class="tech-badge">AWS</span>
                             <span class="tech-badge">Prometheus</span>
                             <span class="tech-badge">Grafana</span>
                         </div>
@@ -254,9 +226,43 @@
     line-height: 1.5;
 }
 
+.role-progression {
+    margin-bottom: 1rem;
+}
+
+.position-badge {
+    display: inline-block;
+    background-color: #0563bb;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+}
+
+.date-badge {
+    display: inline-block;
+    color: #6c757d;
+    font-size: 0.8rem;
+    margin-left: 0.3rem;
+}
+
 @media (max-width: 767.98px) {
     .tech-stack {
         margin-top: 1rem;
+    }
+    
+    .role-progression {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .position-badge {
+        margin-bottom: 0.3rem;
+    }
+    
+    .position-badge.ms-2 {
+        margin-left: 0 !important;
+        margin-top: 0.5rem;
     }
 }
 </style>
