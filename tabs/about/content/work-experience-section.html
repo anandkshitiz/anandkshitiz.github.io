@@ -1,12 +1,14 @@
 <h2 class="h3 mb-3">Professional Experience</h2>
 <div class="timeline">
-    <!-- Staff Software Engineer at Intuit -->
+    <!-- Intuit -->
     <div class="timeline-card timeline-card-primary card shadow-sm">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-2">
                 <div>
-                    <h4 class="mb-0">Staff Software Engineer</h4>
-                    <div class="text-muted">Intuit, Bengaluru</div>
+                    <h4 class="mb-0">Intuit, Bengaluru</h4>
+                    <div class="job-title-container">
+                        <span class="job-title-badge">Staff Software Engineer</span>
+                    </div>
                 </div>
                 <div class="text-muted text-end">Jan 2022 - Present</div>
             </div>
@@ -96,22 +98,20 @@
         </div>
     </div>
 
-    <!-- Combined Athenahealth Experience -->
+    <!-- Athena Health -->
     <div class="timeline-card timeline-card-primary card shadow-sm">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-2">
                 <div>
-                    <h4 class="mb-0">Technical Staff</h4>
-                    <div class="text-muted">Athena Health, Chennai</div>
+                    <h4 class="mb-0">Athena Health, Chennai</h4>
+                    <div class="job-title-container">
+                        <span class="job-title-badge">Lead Member of Technical Staff</span>
+                        <span class="date-badge">Jul 2020 - Dec 2021</span>
+                        <span class="job-title-badge">Senior Member of Technical Staff</span>
+                        <span class="date-badge">Apr 2018 - Jun 2020</span>
+                    </div>
                 </div>
                 <div class="text-muted text-end">Apr 2018 - Dec 2021</div>
-            </div>
-            
-            <div class="role-progression mb-3">
-                <span class="position-badge">Lead Member of Technical Staff</span>
-                <span class="date-badge">Jul 2020 - Dec 2021</span>
-                <span class="position-badge ms-2">Senior Member of Technical Staff</span>
-                <span class="date-badge">Apr 2018 - Jun 2020</span>
             </div>
             
             <div class="experience-item">
@@ -152,8 +152,10 @@
             <div class="previous-roles">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <div>
-                        <h4 class="mb-0">Programmer Analyst</h4>
-                        <div class="text-muted">Oracle, Bengaluru</div>
+                        <h4 class="mb-0">Oracle, Bengaluru</h4>
+                        <div class="job-title-container">
+                            <span class="job-title-badge">Programmer Analyst</span>
+                        </div>
                     </div>
                     <div class="text-muted text-end">Nov 2016 - Mar 2018</div>
                 </div>
@@ -163,8 +165,10 @@
             <div class="previous-roles mt-3">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <div>
-                        <h4 class="mb-0">Software Engineer</h4>
-                        <div class="text-muted">Dassault Systemes, Pune & Bengaluru</div>
+                        <h4 class="mb-0">Dassault Systemes, Pune & Bengaluru</h4>
+                        <div class="job-title-container">
+                            <span class="job-title-badge">Software Engineer</span>
+                        </div>
                     </div>
                     <div class="text-muted text-end">Jul 2012 - Jun 2015</div>
                 </div>
@@ -226,24 +230,26 @@
     line-height: 1.5;
 }
 
-.role-progression {
-    margin-bottom: 1rem;
+.job-title-container {
+    margin-top: 0.3rem;
 }
 
-.position-badge {
+.job-title-badge {
     display: inline-block;
     background-color: #0563bb;
     color: white;
     padding: 0.2rem 0.5rem;
     border-radius: 3px;
     font-size: 0.8rem;
+    margin-right: 0.3rem;
+    margin-bottom: 0.3rem;
 }
 
 .date-badge {
     display: inline-block;
     color: #6c757d;
     font-size: 0.8rem;
-    margin-left: 0.3rem;
+    margin-right: 0.8rem;
 }
 
 @media (max-width: 767.98px) {
@@ -251,18 +257,18 @@
         margin-top: 1rem;
     }
     
-    .role-progression {
+    .job-title-container {
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
     }
     
-    .position-badge {
+    .job-title-badge {
         margin-bottom: 0.3rem;
     }
     
-    .position-badge.ms-2 {
-        margin-left: 0 !important;
-        margin-top: 0.5rem;
+    .date-badge {
+        margin-bottom: 0.5rem;
     }
 }
 </style>
