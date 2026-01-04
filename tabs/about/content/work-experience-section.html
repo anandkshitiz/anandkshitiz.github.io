@@ -1,7 +1,7 @@
 <h2 class="h3 mb-3">Professional Experience</h2>
 <div class="timeline">
     <!-- Tesco -->
-    <div class="timeline-card timeline-card-success card shadow-sm">
+    <div class="timeline-card timeline-card-primary card shadow-sm">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-2">
                 <div>
@@ -16,18 +16,19 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="achievement-list">
-                            <li>Led system design and implementation of a Kafka-based Messaging as a Service (MaaS)
-                                platform using Java, Spring Boot, Kubernetes, and Azure.</li>
-                            <li>Designed a multi-region, multi-tenant, API-first event streaming platform with a
-                                focus on scalability, reliability, and high availability.</li>
-                            <li>Evaluated and productionized Kafka distributions including Confluent and Strimzi
-                                based on performance, operational complexity, and enterprise requirements.</li>
-                            <li>Drove end-to-end delivery from architecture and planning to production launch in
-                                collaboration with platform, security, and SRE teams.</li>
-                            <li>Architected and implemented a GenAI-powered incident resolution system to reduce
-                                Mean Time to Detect (MTTD) and Mean Time to Resolve (MTTR).</li>
-                            <li>Built RAG-based workflows using LangChain, vector databases, and open-source Llama
-                                models for incident analysis and automated remediation.</li>
+                            <li>Led architecture and system design of a Kafka-based Messaging as a Service (MaaS)
+                                platform, enabling standardized event streaming across multiple teams and regions.</li>
+                            <li>Designed a multi-region, multi-tenant, API-first event streaming platform, establishing
+                                architectural patterns for scalability, reliability, security and high availability.</li>
+                            <li>Evaluated and influenced platform adoption decisions across Kafka ecosystems (Confluent,
+                                Strimzi), balancing performance, operational complexity, and enterprise requirements.
+                            </li>
+                            <li>Owned end-to-end platform delivery, from architectural vision and technical roadmap to
+                                production launch, working closely with platform, security, and SRE stakeholders.</li>
+                            <li>Architected a GenAI-powered incident resolution framework to reduce MTTD and MTTR
+                                through automated analysis, guided remediation, and execution plans.</li>
+                            <li>Implemented RAG-based workflows using LangChain, vector databases, and open-source LLMs,
+                                improving operational response quality and developer productivity.</li>
                         </ul>
                     </div>
                 </div>
@@ -36,7 +37,7 @@
     </div>
 
     <!-- Intuit -->
-    <div class="timeline-card timeline-card-success card shadow-sm">
+    <div class="timeline-card timeline-card-primary card shadow-sm">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-2">
                 <div>
@@ -52,14 +53,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="achievement-list">
-                            <li>Spearheaded system design and implementation of Custom Dimensions for 250K+
+                            <li>Led system design and implementation of Custom Dimensions for 250K+
                                 QuickBooks Advanced customers using Java, Spring Boot, Kafka, and PostgreSQL.</li>
-                            <li>Defined and evangelized Hexagonal Architecture patterns to improve maintainability,
+                            <li>Defined and institutionalized Hexagonal Architecture patterns, improving maintainability,
                                 testability, and scalability across microservices.</li>
                             <li>Designed and scaled batch processing platforms with multi-cluster support, improving
                                 throughput and fault tolerance.</li>
-                            <li>Executed Failure Mode and Effects Analysis (FMEA) and chaos testing strategies to
-                                validate system reliability.</li>
+                            <li>Led reliability initiatives including FMEA and chaos testing, strengthening platform robustness under failure scenarios.</li>
                         </ul>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
     </div>
 
     <!-- athenahealth -->
-    <div class="timeline-card timeline-card-success card shadow-sm">
+    <div class="timeline-card timeline-card-primary card shadow-sm">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-2">
                 <div>
@@ -101,7 +101,7 @@
     </div>
 
     <!-- Oracle -->
-    <div class="timeline-card timeline-card-success card shadow-sm">
+    <div class="timeline-card timeline-card-primary card shadow-sm">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-2">
                 <div>
@@ -130,7 +130,7 @@
     </div>
 
     <!-- Dassault Systemes -->
-    <div class="timeline-card timeline-card-success card shadow-sm">
+    <div class="timeline-card timeline-card-primary card shadow-sm">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-2">
                 <div>
@@ -176,14 +176,18 @@
     }
 
     .achievement-list {
-        padding-left: 1.25rem;
-        margin-bottom: 0.5rem;
+        list-style-position: outside;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
     }
 
     .achievement-list li {
-        margin-bottom: 0.4rem;
-        line-height: 1.4;
-        font-size: 0.9rem;
+        margin-bottom: 0.45rem;
+        line-height: 1.45;
+        font-size: 0.95rem;
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
     }
 
     .tech-stack {
