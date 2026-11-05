@@ -1,6 +1,6 @@
 ---
-title: "From Local LLM to AI Platform"
-date: 2026-11-08
+title: From Local LLM to AI Platform
+date: '2026-11-08'
 categories: [AI Infrastructure, Platform Engineering]
 tags: [llm, platform-engineering, distributed-systems, ai-infrastructure]
 ---
